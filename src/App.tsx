@@ -791,7 +791,7 @@ const SavedBorderSakuraBranchesDeactivatedPlaceholder = () => {
   );
 };
 
-const ScenicEverestFooterBg = () => {
+const ScenicEverestFooterBg = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden opacity-90 sm:opacity-100 transition-opacity duration-1000 footer-bg-container">
       {/* Soft atmospheric bottom twilight shading to silhouette Mt. Everest */}
@@ -994,7 +994,7 @@ const ScenicEverestFooterBg = () => {
         </defs>
 
         {/* Soft, hand-painted style evening sky background */}
-        <rect x="0" y="0" width="1600" height="700" fill="url(#footerEverestSkyDawn)" />
+        <rect x="0" y="0" width="1600" height="700" fill={isDarkMode ? "url(#footerEverestSkyDawn)" : "#FAF6F0"} />
 
         {/* Hand-drawn sparkling cosmic night stars (static for rendering efficiency) */}
         {[
@@ -1011,7 +1011,7 @@ const ScenicEverestFooterBg = () => {
             cy={star.y}
             r={star.r}
             fill="#ffedd5"
-            opacity="0.75"
+            opacity={isDarkMode ? "0.75" : "0"}
           />
         ))}
 
@@ -1022,11 +1022,11 @@ const ScenicEverestFooterBg = () => {
         </g>
 
         {/* Deep background organic mountain ridges swathed in soft sunset blush */}
-        <path d="M -100,700 L 220,440 Q 320,410 440,510 L 680,700 Z" fill="#000000" opacity="0.85" />
-        <path d="M 1700,700 L 1380,430 Q 1260,400 1140,520 L 920,700 Z" fill="#000000" opacity="0.75" />
+        <path d="M -100,700 L 220,440 Q 320,410 440,510 L 680,700 Z" fill={isDarkMode ? "#000000" : "#E5DFD5"} opacity="0.85" />
+        <path d="M 1700,700 L 1380,430 Q 1260,400 1140,520 L 920,700 Z" fill={isDarkMode ? "#000000" : "#E5DFD5"} opacity="0.75" />
 
         {/* DISTANT Mt. EVEREST - Centered elegantly in the far distance framing the sun, giving it scenic space */}
-        <g id="DistantHumbleEverest" transform="translate(460, 290) scale(0.425)" opacity="0.85">
+        <g id="DistantHumbleEverest" transform="translate(460, 290) scale(0.425)" opacity={isDarkMode ? 0.85 : 0.45}>
           {/* Back peak glow */}
           <path d="M 450,700 Q 650,450 800,140 Q 950,450 1150,700 Z" fill="#10B981" opacity="0.14" filter="blur(16px)" />
           {/* Left shady facet */}
@@ -2031,7 +2031,7 @@ export default function App() {
                   >
                     <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300 group-hover:bg-sakura-red/20 group-hover:border-sakura-red/30 shadow-xl">
                       <motion.div variants={item.variants}>
-                        <item.icon className="h-6 w-6 text-sakura-rose group-hover:text-white transition-colors duration-300" />
+                        <item.icon className={`h-6 w-6 transition-colors duration-300 ${isDarkMode ? 'text-sakura-rose group-hover:text-white' : 'text-sakura-rose group-hover:text-sakura-red'}`} />
                       </motion.div>
                     </div>
                     <h4 className="font-serif text-base text-white mb-1 tracking-wide">{item.title}</h4>
@@ -2547,9 +2547,11 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-24 px-4 bg-black border-t border-white/5 relative overflow-hidden">
+      <footer className={`py-24 px-4 border-t relative overflow-hidden transition-colors duration-1000 ${
+        isDarkMode ? 'bg-black border-white/5' : 'bg-[#FAF6F0] border-neutral-200'
+      }`}>
         {/* Dynamic borderless ambient landscape background with Everest and Sakura branches */}
-        <ScenicEverestFooterBg />
+        <ScenicEverestFooterBg isDarkMode={isDarkMode} />
         
         <div className="max-w-7xl mx-auto flex flex-col items-center gap-12 relative z-10">
           <div className="flex flex-col items-center gap-6 text-center">

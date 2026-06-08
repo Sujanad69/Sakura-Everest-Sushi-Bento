@@ -60,24 +60,11 @@
   will-change: transform, opacity;
 }
 
-/* Highly optimized compositor-only animations utilizing CSS custom properties */
-@keyframes cssBlossomSway {
-  0%, 100% {
-    transform: rotate(var(--base-rotation)) scale(var(--base-scale));
-    opacity: 0.95;
-  }
-  50% {
-    /* Pure gentle rotation swing without heavy multi-layer scale rasterization */
-    transform: rotate(calc(var(--base-rotation) + 2deg)) scale(var(--base-scale));
-    opacity: 1;
-  }
-}
-
+/* Highly optimized static layout for intricate SVG tree blossoms to eliminate composition overhead and lag on laptops */
 .sakura-tree-blossom {
   transform-origin: 0 0;
-  animation: cssBlossomSway var(--duration) ease-in-out infinite;
-  animation-delay: var(--delay);
-  will-change: transform;
+  transform: rotate(var(--base-rotation)) scale(var(--base-scale));
+  opacity: 0.98;
 }
 
 /* Highly optimized dynamic gradient background & ambient flowing glows */
