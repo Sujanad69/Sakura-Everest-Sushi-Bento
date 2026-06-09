@@ -1,6 +1,6 @@
 {
   "name": "Sakura Everest Sushi & Bento",
-  "description": "Premium Japanese fusion and authentic bento in the heart of Coventry. Experience the art of sushi.",
+  "description": "Authentic Japanese fusion and delicious bento in the heart of Coventry. Experience the art of sushi.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

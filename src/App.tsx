@@ -36,6 +36,7 @@ import {
 import { ChibiMaki } from "./components/ChibiMaki";
 import { KnowYourSushi } from "./components/KnowYourSushi";
 import { GoogleReviews } from "./components/GoogleReviews";
+import { OrderNowSection } from "./components/OrderNowSection";
 import { 
   WaveChopsticksDivider, 
   ChopsticksLiftDivider, 
@@ -1754,6 +1755,7 @@ export default function App() {
               <a href="#about" className="hover:text-white transition">About</a>
               <a href="#space" className="hover:text-white transition">Art of Sushi</a>
               <a href="#sushi-guide" className="hover:text-white transition">Sushi Guide</a>
+              <a href="#order-now" className="hover:text-white transition">Order Now</a>
               <a href="#contact" className="hover:text-white transition">Contact</a>
             </nav>
 
@@ -1788,6 +1790,7 @@ export default function App() {
                   { name: 'About', href: '#about' },
                   { name: 'Art of Sushi', href: '#space' },
                   { name: 'Sushi Guide', href: '#sushi-guide' },
+                  { name: 'Order Now', href: '#order-now' },
                   { name: 'Contact', href: '#contact' }
                 ].map((item) => (
                   <a key={item.name} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block text-sm font-medium text-neutral-300 hover:text-sakura-red py-1">{item.name}</a>
@@ -1884,7 +1887,7 @@ export default function App() {
                   </motion.div>
                 </div>
                 
-                {/* Bottom Left: Contact us button - repositioned absolutely on lg */}
+                {/* Bottom Left: Order Now button - repositioned absolutely on lg */}
                 <div className="w-full flex justify-start pb-14 sm:pb-16 lg:absolute lg:bottom-24 lg:left-12 lg:pb-0 pointer-events-auto">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -1892,10 +1895,10 @@ export default function App() {
                     transition={{ delay: 0.5 }}
                   >
                     <a 
-                      href="#contact"
+                      href="#order-now"
                       className="inline-flex items-center gap-2 rounded-xl bg-sakura-red px-6 py-3 text-sm font-medium text-white hover:bg-emerald-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-sakura-red/20 hover:shadow-emerald-500/20 active:scale-95"
                     >
-                      Contact us
+                      Order Now
                     </a>
                   </motion.div>
                 </div>
@@ -2240,6 +2243,12 @@ export default function App() {
       {/* Google Testimonials & Reviews Section */}
       <GoogleReviews isDarkMode={isDarkMode} />
 
+      {/* Traditional Seigaiha Wave & Urushi Chopsticks Section Divider */}
+      <WaveChopsticksDivider isDarkMode={isDarkMode} />
+
+      {/* Order Now Section */}
+      <OrderNowSection isDarkMode={isDarkMode} />
+
       {/* Immersive Gallery Full-screen Lightbox & Slide Picker */}
       <AnimatePresence>
         {isPickerActive && (
@@ -2566,6 +2575,7 @@ export default function App() {
             <a href="#about" className="hover:text-sakura-red transition">About</a>
             <a href="#space" className="hover:text-sakura-red transition">Art of Sushi</a>
             <a href="#sushi-guide" className="hover:text-sakura-red transition">Sushi Guide</a>
+            <a href="#order-now" className="hover:text-sakura-red transition">Order Now</a>
             <a href="#contact" className="hover:text-sakura-red transition">Contact</a>
           </div>
 
