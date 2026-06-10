@@ -32,7 +32,7 @@ export const OrderNowSection: React.FC<OrderNowSectionProps> = ({ isDarkMode }) 
     <section 
       id="order-now" 
       className={`py-8 md:py-12 px-4 md:px-6 relative overflow-hidden transition-colors duration-1000 ${
-        isDarkMode ? 'bg-[#080509] text-white' : 'bg-[#FAF6F0] text-neutral-800'
+        isDarkMode ? 'bg-black text-white' : 'bg-[#FAF6F0] text-neutral-800'
       }`}
     >
       <div className="max-w-3xl mx-auto relative z-10">
@@ -83,9 +83,12 @@ export const OrderNowSection: React.FC<OrderNowSectionProps> = ({ isDarkMode }) 
                   src={partner.logoUrl} 
                   alt={`${partner.name} Logo`}
                   referrerPolicy="no-referrer"
-                  // Light mode: High-contrast legible grayscale (opacity 75%) that transitions to full vibrant original colors on hover
-                  // Dark mode: Pristine inverted snow-white (opacity 75%) that sharpens to 100% full-brilliance white on hover (Apple style)
-                  className={`${partner.logoHeight} w-auto object-contain transition-all duration-300 filter grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 dark:brightness-0 dark:invert dark:opacity-75 dark:group-hover:brightness-0 dark:group-hover:invert dark:group-hover:opacity-100`}
+                  // Clean explicit conditional filters for dark and light modes to prevent global class styling mismatches
+                  className={`${partner.logoHeight} w-auto object-contain transition-all duration-350 filter ${
+                    isDarkMode 
+                      ? "brightness-0 invert opacity-65 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100" 
+                      : "brightness-0 opacity-65 group-hover:brightness-100 group-hover:opacity-100"
+                  }`}
                 />
               </div>
 
